@@ -15,11 +15,8 @@ import BasicLayout from "@/layouts/BasicLayout.vue";
 import {useLoginUserStore} from "@/stores/useLoginUserStore.ts";
 import {ref} from "vue";
 
-
-
-
-const useLoginUser = useLoginUserStore();
-useLoginUser.fetchLoginUser();
+// const useLoginUser = useLoginUserStore();
+// useLoginUser.fetchLoginUser();
 
 const locale = ref(zhCN);
 </script>
