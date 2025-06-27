@@ -17,9 +17,45 @@ declare namespace API {
     message?: string
   }
 
+  type BaseResponsePagePicture_ = {
+    code?: number
+    data?: PagePicture_
+    message?: string
+  }
+
+  type BaseResponsePagePictureVO_ = {
+    code?: number
+    data?: PagePictureVO_
+    message?: string
+  }
+
   type BaseResponsePageUserVO_ = {
     code?: number
     data?: PageUserVO_
+    message?: string
+  }
+
+  type BaseResponsePicture_ = {
+    code?: number
+    data?: Picture_
+    message?: string
+  }
+
+  type BaseResponsePictureTagCategory_ = {
+    code?: number
+    data?: PictureTagCategory
+    message?: string
+  }
+
+  type BaseResponsePictureVO_ = {
+    code?: number
+    data?: PictureVO
+    message?: string
+  }
+
+  type BaseResponseString_ = {
+    code?: number
+    data?: string
     message?: string
   }
 
@@ -33,6 +69,16 @@ declare namespace API {
     code?: number
     data?: UserVO
     message?: string
+  }
+
+  type getPictureByIdUsingGETParams = {
+    /** id */
+    id?: number
+  }
+
+  type getPictureVOByIdUsingGETParams = {
+    /** id */
+    id?: number
   }
 
   type getUserByIdUsingGETParams = {
@@ -57,6 +103,22 @@ declare namespace API {
     userRole?: string
   }
 
+  type PagePicture_ = {
+    current?: number
+    pages?: number
+    records?: Picture_[]
+    size?: number
+    total?: number
+  }
+
+  type PagePictureVO_ = {
+    current?: number
+    pages?: number
+    records?: PictureVO[]
+    size?: number
+    total?: number
+  }
+
   type PageUserVO_ = {
     current?: number
     pages?: number
@@ -65,7 +127,123 @@ declare namespace API {
     total?: number
   }
 
+  type Picture_ = {
+    /** 分类 */
+    category?: string
+    /** 创建时间 */
+    createTime?: string
+    /** 编辑时间 */
+    editTime?: string
+    /** id */
+    id?: number
+    /** 简介 */
+    introduction?: string
+    /** 是否删除 */
+    isDelete?: number
+    /** 图片名称 */
+    name?: string
+    /** 图片格式 */
+    picFormat?: string
+    /** 图片高度 */
+    picHeight?: number
+    /** 图片宽高比例 */
+    picScale?: number
+    /** 图片体积 */
+    picSize?: number
+    /** 图片宽度 */
+    picWidth?: number
+    /** 标签（JSON 数组） */
+    tags?: string
+    /** 更新时间 */
+    updateTime?: string
+    /** 图片 url */
+    url?: string
+    /** 创建用户 id */
+    userId?: number
+  }
+
+  type PictureTagCategory = {
+    categoryList?: string[]
+    tagList?: string[]
+  }
+
+  type PictureVO = {
+    category?: string
+    createTime?: string
+    editTime?: string
+    id?: number
+    introduction?: string
+    name?: string
+    picFormat?: string
+    picHeight?: number
+    picScale?: number
+    picSize?: number
+    picWidth?: number
+    tags?: string[]
+    updateTime?: string
+    url?: string
+    user?: UserVO
+    userId?: number
+  }
+
   type Pinyin__ = {
+    /** 图片分类 */
+    category?: string
+    /** 图片id */
+    id?: number
+    /** 图片简介 */
+    introduction?: string
+    /** 图片名称 */
+    name?: string
+    /** 图片标签 */
+    tags?: string[]
+  }
+
+  type Pinyin_2 = {
+    /** 图片分类 */
+    category?: string
+    current?: number
+    /** 图片id */
+    id?: number
+    /** 图片简介 */
+    introduction?: string
+    /** 图片名称 */
+    name?: string
+    pageSize?: number
+    /** 图片格式 */
+    picFormat?: string
+    /** 图片高度 */
+    picHeight?: number
+    /** 图片比例 */
+    picScale?: number
+    /** 文件体积 */
+    picSize?: number
+    /** 图片宽度 */
+    picWidth?: number
+    /** 搜索词 */
+    searchText?: string
+    sortField?: string
+    sortOrder?: string
+    /** 图片标签 */
+    tags?: string[]
+    /** 用户id */
+    userId?: number
+  }
+
+  type Pinyin_3 = {
+    /** 图片分类 */
+    category?: string
+    /** 图片id */
+    id?: number
+    /** 图片简介 */
+    introduction?: string
+    /** 图片名称 */
+    name?: string
+    /** 图片标签 */
+    tags?: string[]
+  }
+
+  type Pinyin_4 = {
     /** 用户id */
     id?: number
     /** 用户头像 */
@@ -78,7 +256,7 @@ declare namespace API {
     userRole?: string
   }
 
-  type Pinyin_2 = {
+  type Pinyin_5 = {
     /** 用户账号 */
     userAccount?: string
     /** 用户头像 */
@@ -91,7 +269,7 @@ declare namespace API {
     userRole?: string
   }
 
-  type Pinyin_3 = {
+  type Pinyin_6 = {
     current?: number
     /** 用户id */
     id?: number
@@ -108,7 +286,7 @@ declare namespace API {
     userRole?: string
   }
 
-  type Pinyin_4 = {
+  type Pinyin_7 = {
     /** 校验密码 */
     checkPassword?: string
     /** 用户账号 */
@@ -117,15 +295,25 @@ declare namespace API {
     userPassword?: string
   }
 
-  type Pinyin_5 = {
+  type Pinyin_8 = {
     /** 用户账号 */
     userAccount?: string
     /** 用户密码 */
     userPassword?: string
   }
 
-  type Pinyin_6 = {
+  type Pinyin_9 = {
     /** id */
+    id?: number
+  }
+
+  type testDownloadFileUsingPOSTParams = {
+    /** filepath */
+    filepath?: string
+  }
+
+  type uploadPictureUsingPOSTParams = {
+    /** 图片id */
     id?: number
   }
 
