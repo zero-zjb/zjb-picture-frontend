@@ -5,9 +5,12 @@
       <a-layout-header class="header">
         <GlobalHeader/>
       </a-layout-header>
-      <a-layout-content class="content">
-        <router-view/>
-      </a-layout-content>
+      <a-layout>
+        <GlobalSider class="sider" />
+        <a-layout-content class="content">
+          <router-view />
+        </a-layout-content>
+      </a-layout>
       <a-layout-footer class="footer">
         zjb-智能协同云图库 by zjb
       </a-layout-footer>
@@ -18,6 +21,7 @@
 <script setup lang="ts">
 
 import GlobalHeader from "@/components/GlobalHeader.vue";
+import GlobalSider from "@/components/GlobalSider.vue";
 </script>
 
 <style scoped>
@@ -26,7 +30,7 @@ import GlobalHeader from "@/components/GlobalHeader.vue";
   padding-inline: 20px;
   background: white;
   color: unset;
-  margin-bottom: 15px;
+  margin-bottom: 1px;
 }
 
 #basicLayout .content {
@@ -35,6 +39,18 @@ import GlobalHeader from "@/components/GlobalHeader.vue";
   background: linear-gradient(to right, #fefefe, #ffffff);
   /*防止下面的内容被导航栏遮住*/
   margin-bottom: 28px;
+}
+
+
+#basicLayout .sider {
+  background: #fff;
+  padding-top: 20px;
+  border-right: 0.5px solid #eee;
+}
+
+#basicLayout :deep(.ant-menu-root) {
+  border-bottom: none !important;
+  border-inline-end: none !important;
 }
 
 #basicLayout .footer {

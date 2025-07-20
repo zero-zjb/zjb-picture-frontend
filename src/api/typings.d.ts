@@ -1,7 +1,26 @@
 declare namespace API {
+  type addSpaceUsingPOSTParams = {
+    /** 空间级别：0-普通版 1-专业版 2-旗舰版 */
+    spaceLevel?: number
+    /** 空间名称 */
+    spaceName?: string
+  }
+
   type BaseResponseBoolean_ = {
     code?: number
     data?: boolean
+    message?: string
+  }
+
+  type BaseResponseInt_ = {
+    code?: number
+    data?: number
+    message?: string
+  }
+
+  type BaseResponseListSpaceLevel_ = {
+    code?: number
+    data?: SpaceLevel[]
     message?: string
   }
 
@@ -29,6 +48,18 @@ declare namespace API {
     message?: string
   }
 
+  type BaseResponsePageSpace_ = {
+    code?: number
+    data?: PageSpace_
+    message?: string
+  }
+
+  type BaseResponsePageSpaceVO_ = {
+    code?: number
+    data?: PageSpaceVO_
+    message?: string
+  }
+
   type BaseResponsePageUserVO_ = {
     code?: number
     data?: PageUserVO_
@@ -50,6 +81,12 @@ declare namespace API {
   type BaseResponsePictureVO_ = {
     code?: number
     data?: PictureVO
+    message?: string
+  }
+
+  type BaseResponseSpaceVO_ = {
+    code?: number
+    data?: SpaceVO
     message?: string
   }
 
@@ -77,6 +114,11 @@ declare namespace API {
   }
 
   type getPictureVOByIdUsingGETParams = {
+    /** id */
+    id?: number
+  }
+
+  type getSpaceVOByIdUsingGETParams = {
     /** id */
     id?: number
   }
@@ -119,6 +161,22 @@ declare namespace API {
     total?: number
   }
 
+  type PageSpace_ = {
+    current?: number
+    pages?: number
+    records?: Space_[]
+    size?: number
+    total?: number
+  }
+
+  type PageSpaceVO_ = {
+    current?: number
+    pages?: number
+    records?: SpaceVO[]
+    size?: number
+    total?: number
+  }
+
   type PageUserVO_ = {
     current?: number
     pages?: number
@@ -152,8 +210,20 @@ declare namespace API {
     picSize?: number
     /** 图片宽度 */
     picWidth?: number
+    /** 审核信息 */
+    reviewMessage?: string
+    /** 状态：0-待审核; 1-通过; 2-拒绝 */
+    reviewStatus?: number
+    /** 审核时间 */
+    reviewTime?: string
+    /** 审核人 id */
+    reviewerId?: number
+    /** 空间 id */
+    spaceId?: number
     /** 标签（JSON 数组） */
     tags?: string
+    /** 缩略图 url */
+    thumbnailUrl?: string
     /** 更新时间 */
     updateTime?: string
     /** 图片 url */
@@ -179,7 +249,9 @@ declare namespace API {
     picScale?: number
     picSize?: number
     picWidth?: number
+    spaceId?: number
     tags?: string[]
+    thumbnailUrl?: string
     updateTime?: string
     url?: string
     user?: UserVO
@@ -187,89 +259,19 @@ declare namespace API {
   }
 
   type Pinyin__ = {
-    /** 图片分类 */
-    category?: string
-    /** 图片id */
+    /** id */
     id?: number
-    /** 图片简介 */
-    introduction?: string
-    /** 图片名称 */
-    name?: string
-    /** 图片标签 */
-    tags?: string[]
+    /** 空间图片的最大数量 */
+    maxCount?: number
+    /** 空间图片的最大总大小 */
+    maxSize?: number
+    /** 空间级别：0-普通版 1-专业版 2-旗舰版 */
+    spaceLevel?: number
+    /** 空间名称 */
+    spaceName?: string
   }
 
-  type Pinyin_2 = {
-    /** 图片分类 */
-    category?: string
-    current?: number
-    /** 图片id */
-    id?: number
-    /** 图片简介 */
-    introduction?: string
-    /** 图片名称 */
-    name?: string
-    pageSize?: number
-    /** 图片格式 */
-    picFormat?: string
-    /** 图片高度 */
-    picHeight?: number
-    /** 图片比例 */
-    picScale?: number
-    /** 文件体积 */
-    picSize?: number
-    /** 图片宽度 */
-    picWidth?: number
-    /** 搜索词 */
-    searchText?: string
-    sortField?: string
-    sortOrder?: string
-    /** 图片标签 */
-    tags?: string[]
-    /** 用户id */
-    userId?: number
-  }
-
-  type Pinyin_3 = {
-    /** 图片分类 */
-    category?: string
-    /** 图片id */
-    id?: number
-    /** 图片简介 */
-    introduction?: string
-    /** 图片名称 */
-    name?: string
-    /** 图片标签 */
-    tags?: string[]
-  }
-
-  type Pinyin_4 = {
-    /** 用户id */
-    id?: number
-    /** 用户头像 */
-    userAvatar?: string
-    /** 用户昵称 */
-    userName?: string
-    /** 简介 */
-    userProfile?: string
-    /** 用户角色：user/admin */
-    userRole?: string
-  }
-
-  type Pinyin_5 = {
-    /** 用户账号 */
-    userAccount?: string
-    /** 用户头像 */
-    userAvatar?: string
-    /** 用户昵称 */
-    userName?: string
-    /** 用户简介 */
-    userProfile?: string
-    /** 用户角色: user, admin */
-    userRole?: string
-  }
-
-  type Pinyin_6 = {
+  type Pinyin_10 = {
     current?: number
     /** 用户id */
     id?: number
@@ -286,7 +288,7 @@ declare namespace API {
     userRole?: string
   }
 
-  type Pinyin_7 = {
+  type Pinyin_11 = {
     /** 校验密码 */
     checkPassword?: string
     /** 用户账号 */
@@ -295,16 +297,214 @@ declare namespace API {
     userPassword?: string
   }
 
-  type Pinyin_8 = {
+  type Pinyin_12 = {
     /** 用户账号 */
     userAccount?: string
     /** 用户密码 */
     userPassword?: string
   }
 
-  type Pinyin_9 = {
+  type Pinyin_13 = {
+    current?: number
     /** id */
     id?: number
+    pageSize?: number
+    sortField?: string
+    sortOrder?: string
+    /** 空间级别：0-普通版 1-专业版 2-旗舰版 */
+    spaceLevel?: number
+    /** 空间名称 */
+    spaceName?: string
+    /** 用户 id */
+    userId?: number
+  }
+
+  type Pinyin_14 = {
+    /** 空间 id */
+    id?: number
+    /** 空间名称 */
+    spaceName?: string
+  }
+
+  type Pinyin_15 = {
+    /** id */
+    id?: number
+  }
+
+  type Pinyin_2 = {
+    /** 图片上传地址 */
+    fileUrl?: string
+    /** 图片id */
+    id?: number
+    /** 图片名称 */
+    picName?: string
+    spaceId?: number
+  }
+
+  type Pinyin_3 = {
+    /** 图片id */
+    id?: number
+    /** 审核信息 */
+    reviewMessage?: string
+    /** 状态：0-待审核; 1-通过; 2-拒绝 */
+    reviewStatus?: number
+  }
+
+  type Pinyin_4 = {
+    /** 图片分类 */
+    category?: string
+    /** 图片抓取数量 */
+    count?: number
+    /** 名称前缀 */
+    namePrefix?: string
+    /** 图片搜索词 */
+    searchText?: string
+    /** 图片标签 */
+    tags?: string[]
+  }
+
+  type Pinyin_5 = {
+    /** 图片分类 */
+    category?: string
+    /** 图片id */
+    id?: number
+    /** 图片简介 */
+    introduction?: string
+    /** 图片名称 */
+    name?: string
+    /** 图片标签 */
+    tags?: string[]
+  }
+
+  type Pinyin_6 = {
+    /** 图片分类 */
+    category?: string
+    current?: number
+    /** 图片id */
+    id?: number
+    /** 图片简介 */
+    introduction?: string
+    /** 图片名称 */
+    name?: string
+    /** 是否只查询 spaceId 为 null 的数据 */
+    nullSpaceId?: boolean
+    pageSize?: number
+    /** 图片格式 */
+    picFormat?: string
+    /** 图片高度 */
+    picHeight?: number
+    /** 图片比例 */
+    picScale?: number
+    /** 文件体积 */
+    picSize?: number
+    /** 图片宽度 */
+    picWidth?: number
+    /** 审核信息 */
+    reviewMessage?: string
+    /** 状态：0-待审核; 1-通过; 2-拒绝 */
+    reviewStatus?: number
+    /** 审核时间 */
+    reviewTime?: string
+    /** 审核人 id */
+    reviewerId?: number
+    /** 搜索词 */
+    searchText?: string
+    sortField?: string
+    sortOrder?: string
+    /** 空间id */
+    spaceId?: number
+    /** 图片标签 */
+    tags?: string[]
+    /** 用户id */
+    userId?: number
+  }
+
+  type Pinyin_7 = {
+    /** 图片分类 */
+    category?: string
+    /** 图片id */
+    id?: number
+    /** 图片简介 */
+    introduction?: string
+    /** 图片名称 */
+    name?: string
+    /** 图片标签 */
+    tags?: string[]
+  }
+
+  type Pinyin_8 = {
+    /** 用户id */
+    id?: number
+    /** 用户头像 */
+    userAvatar?: string
+    /** 用户昵称 */
+    userName?: string
+    /** 简介 */
+    userProfile?: string
+    /** 用户角色：user/admin */
+    userRole?: string
+  }
+
+  type Pinyin_9 = {
+    /** 用户账号 */
+    userAccount?: string
+    /** 用户头像 */
+    userAvatar?: string
+    /** 用户昵称 */
+    userName?: string
+    /** 用户简介 */
+    userProfile?: string
+    /** 用户角色: user, admin */
+    userRole?: string
+  }
+
+  type Space_ = {
+    /** 创建时间 */
+    createTime?: string
+    /** 编辑时间 */
+    editTime?: string
+    /** id */
+    id?: number
+    /** 是否删除 */
+    isDelete?: number
+    /** 空间图片的最大数量 */
+    maxCount?: number
+    /** 空间图片的最大总大小 */
+    maxSize?: number
+    /** 空间级别：0-普通版 1-专业版 2-旗舰版 */
+    spaceLevel?: number
+    /** 空间名称 */
+    spaceName?: string
+    /** 当前空间下的图片数量 */
+    totalCount?: number
+    /** 当前空间下图片的总大小 */
+    totalSize?: number
+    /** 更新时间 */
+    updateTime?: string
+    /** 创建用户 id */
+    userId?: number
+  }
+
+  type SpaceLevel = {
+    maxCount?: number
+    maxSize?: number
+    text?: string
+    value?: number
+  }
+
+  type SpaceVO = {
+    createTime?: string
+    editTime?: string
+    id?: number
+    maxCount?: number
+    maxSize?: number
+    spaceLevel?: number
+    spaceName?: string
+    totalCount?: number
+    totalSize?: number
+    updateTime?: string
+    user?: UserVO
+    userId?: number
   }
 
   type testDownloadFileUsingPOSTParams = {
@@ -313,8 +513,13 @@ declare namespace API {
   }
 
   type uploadPictureUsingPOSTParams = {
+    /** 图片上传地址 */
+    fileUrl?: string
     /** 图片id */
     id?: number
+    /** 图片名称 */
+    picName?: string
+    spaceId?: number
   }
 
   type User_ = {

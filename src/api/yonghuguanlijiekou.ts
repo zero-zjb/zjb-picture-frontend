@@ -3,7 +3,7 @@
 import request from '@/request'
 
 /** 创建用户 POST /api/user/add */
-export async function addUserUsingPost(body: API.Pinyin_5, options?: { [key: string]: any }) {
+export async function addUserUsingPost(body: API.Pinyin_9, options?: { [key: string]: any }) {
   return request<API.BaseResponseLong_>('/api/user/add', {
     method: 'POST',
     headers: {
@@ -15,7 +15,7 @@ export async function addUserUsingPost(body: API.Pinyin_5, options?: { [key: str
 }
 
 /** 删除用户 POST /api/user/delete */
-export async function deleteUserUsingPost(body: API.Pinyin_9, options?: { [key: string]: any }) {
+export async function deleteUserUsingPost(body: API.Pinyin_15, options?: { [key: string]: any }) {
   return request<API.BaseResponseBoolean_>('/api/user/delete', {
     method: 'POST',
     headers: {
@@ -66,7 +66,7 @@ export async function getUserVoByIdUsingGet(
 
 /** 分页获取用户封装列表 POST /api/user/list/page/vo */
 export async function listUserVoByPageUsingPost(
-  body: API.Pinyin_6,
+  body: API.Pinyin_10,
   options?: { [key: string]: any }
 ) {
   return request<API.BaseResponsePageUserVO_>('/api/user/list/page/vo', {
@@ -80,7 +80,7 @@ export async function listUserVoByPageUsingPost(
 }
 
 /** 用户登录接口 POST /api/user/login */
-export async function userLoginUsingPost(body: API.Pinyin_8, options?: { [key: string]: any }) {
+export async function userLoginUsingPost(body: API.Pinyin_12, options?: { [key: string]: any }) {
   return request<API.BaseResponseLoginUserVO_>('/api/user/login', {
     method: 'POST',
     headers: {
@@ -100,7 +100,7 @@ export async function userLogoutUsingPost(options?: { [key: string]: any }) {
 }
 
 /** 用户注册接口 POST /api/user/register */
-export async function userRegisterUsingPost(body: API.Pinyin_7, options?: { [key: string]: any }) {
+export async function userRegisterUsingPost(body: API.Pinyin_11, options?: { [key: string]: any }) {
   return request<API.BaseResponseLong_>('/api/user/register', {
     method: 'POST',
     headers: {
@@ -112,7 +112,7 @@ export async function userRegisterUsingPost(body: API.Pinyin_7, options?: { [key
 }
 
 /** 更新用户 POST /api/user/update */
-export async function updateUserUsingPost(body: API.Pinyin_4, options?: { [key: string]: any }) {
+export async function updateUserUsingPost(body: API.Pinyin_8, options?: { [key: string]: any }) {
   return request<API.BaseResponseBoolean_>('/api/user/update', {
     method: 'POST',
     headers: {

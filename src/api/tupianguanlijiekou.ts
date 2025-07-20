@@ -3,7 +3,10 @@
 import request from '@/request'
 
 /** 删除图片 POST /api/picture/delete */
-export async function deletePictureUsingPost(body: API.Pinyin_9, options?: { [key: string]: any }) {
+export async function deletePictureUsingPost(
+  body: API.Pinyin_15,
+  options?: { [key: string]: any }
+) {
   return request<API.BaseResponseBoolean_>('/api/picture/delete', {
     method: 'POST',
     headers: {
@@ -15,7 +18,7 @@ export async function deletePictureUsingPost(body: API.Pinyin_9, options?: { [ke
 }
 
 /** 编辑图片 POST /api/picture/edit */
-export async function editPictureUsingPost(body: API.Pinyin_3, options?: { [key: string]: any }) {
+export async function editPictureUsingPost(body: API.Pinyin_7, options?: { [key: string]: any }) {
   return request<API.BaseResponseBoolean_>('/api/picture/edit', {
     method: 'POST',
     headers: {
@@ -58,7 +61,7 @@ export async function getPictureVoByIdUsingGet(
 
 /** 分页获取图片列表 POST /api/picture/list/page */
 export async function listPictureByPageUsingPost(
-  body: API.Pinyin_2,
+  body: API.Pinyin_6,
   options?: { [key: string]: any }
 ) {
   return request<API.BaseResponsePagePicture_>('/api/picture/list/page', {
@@ -73,10 +76,40 @@ export async function listPictureByPageUsingPost(
 
 /** 分页获取图片列表（封装类） POST /api/picture/list/page/vo */
 export async function listPictureVoByPageUsingPost(
-  body: API.Pinyin_2,
+  body: API.Pinyin_6,
   options?: { [key: string]: any }
 ) {
   return request<API.BaseResponsePagePictureVO_>('/api/picture/list/page/vo', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: body,
+    ...(options || {}),
+  })
+}
+
+/** 获取图片列表（多级缓存） POST /api/picture/list/page/vo/cache */
+export async function listPictureVoByPageWithCacheUsingPost(
+  body: API.Pinyin_6,
+  options?: { [key: string]: any }
+) {
+  return request<API.BaseResponsePagePictureVO_>('/api/picture/list/page/vo/cache', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: body,
+    ...(options || {}),
+  })
+}
+
+/** 图片审核（管理员） POST /api/picture/review */
+export async function doPictureReviewUsingPost(
+  body: API.Pinyin_3,
+  options?: { [key: string]: any }
+) {
+  return request<API.BaseResponseBoolean_>('/api/picture/review', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -95,7 +128,7 @@ export async function listPictureTagCategoryUsingGet(options?: { [key: string]: 
 }
 
 /** 更新图片 POST /api/picture/update */
-export async function updatePictureUsingPost(body: API.Pinyin__, options?: { [key: string]: any }) {
+export async function updatePictureUsingPost(body: API.Pinyin_5, options?: { [key: string]: any }) {
   return request<API.BaseResponseBoolean_>('/api/picture/update', {
     method: 'POST',
     headers: {
@@ -106,7 +139,7 @@ export async function updatePictureUsingPost(body: API.Pinyin__, options?: { [ke
   })
 }
 
-/** 上传图片 POST /api/picture/upload */
+/** 本地上传图片 POST /api/picture/upload */
 export async function uploadPictureUsingPost(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
   params: API.uploadPictureUsingPOSTParams,
@@ -143,6 +176,36 @@ export async function uploadPictureUsingPost(
     },
     data: formData,
     requestType: 'form',
+    ...(options || {}),
+  })
+}
+
+/** 批量抓取上传图片 POST /api/picture/upload/batch */
+export async function uploadPictureByBatchUsingPost(
+  body: API.Pinyin_4,
+  options?: { [key: string]: any }
+) {
+  return request<API.BaseResponseInt_>('/api/picture/upload/batch', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: body,
+    ...(options || {}),
+  })
+}
+
+/** 通过url上传图片 POST /api/picture/upload/url */
+export async function uploadPictureByUrlUsingPost(
+  body: API.Pinyin_2,
+  options?: { [key: string]: any }
+) {
+  return request<API.BaseResponsePictureVO_>('/api/picture/upload/url', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: body,
     ...(options || {}),
   })
 }
