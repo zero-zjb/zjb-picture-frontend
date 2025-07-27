@@ -46,6 +46,19 @@
             <a-descriptions-item label="大小">
               {{ formatSize(picture.picSize) }}
             </a-descriptions-item>
+            <a-descriptions-item label="主色调">
+              <a-space>
+                {{ picture.picColor ?? '-' }}
+                <div
+                  v-if="picture.picColor"
+                  :style="{
+                    backgroundColor: toHexColor(picture.picColor),
+                    width: '16px',
+                    height: '16px',
+                  }"
+                />
+              </a-space>
+            </a-descriptions-item>
           </a-descriptions>
 
           <a-space wrap>
@@ -55,8 +68,13 @@
                 <DownloadOutlined />
               </template>
             </a-button>
-
-            <a-button v-if="canEdit" type="default" @click="doEdit">
+              <a-button type="primary" ghost @click="doShare">
+                  分享
+                  <template #icon>
+                      <share-alt-outlined />
+                  </template>
+              </a-button>
+              <a-button v-if="canEdit" type="default" @click="doEdit">
               编辑
               <template #icon>
                 <EditOutlined />
@@ -80,7 +98,7 @@
 import { computed, onMounted, reactive, ref } from 'vue'
 import { deletePictureUsingPost, getPictureVoByIdUsingGet } from '@/api/tupianguanlijiekou.ts'
 import { message } from 'ant-design-vue'
-import { downloadImage, formatSize } from '../utils'
+import { downloadImage, formatSize, toHexColor } from '../utils'
 import { useLoginUserStore } from '@/stores/useLoginUserStore.ts'
 import router from '@/router'
 import { EditOutlined, DeleteOutlined, DownloadOutlined } from '@ant-design/icons-vue'
@@ -142,8 +160,8 @@ const doDelete = async () => {
   }
   const res = await deletePictureUsingPost({ id })
   if (res.data.code === 0) {
-    message.success('删除成功');
-    if(picture.value.spaceId != null){
+    message.success('删除成功')
+    if (picture.value.spaceId != null) {
       router.push('/space/' + picture.value.spaceId)
     }
     router.push('/')
@@ -156,6 +174,20 @@ const doDelete = async () => {
 const doDownload = () => {
   downloadImage(picture.value.url)
 }
+
+// 分享弹窗引用
+const shareModalRef = ref()
+// 分享链接
+const shareLink = ref<string>()
+
+// 分享
+const doShare = () => {
+    shareLink.value = `${window.location.protocol}//${window.location.host}/picture/${picture.value.id}`
+    if (shareModalRef.value) {
+        shareModalRef.value.openModal()
+    }
+}
+
 </script>
 
 <style scoped>
