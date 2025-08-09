@@ -37,6 +37,12 @@ declare namespace API {
     message?: string
   }
 
+  type BaseResponseList_ = {
+    code?: number
+    data?: Pinyin_17[]
+    message?: string
+  }
+
   type BaseResponseListPictureVO_ = {
     code?: number
     data?: PictureVO[]
@@ -49,9 +55,33 @@ declare namespace API {
     message?: string
   }
 
+  type BaseResponseListSpace_ = {
+    code?: number
+    data?: Space_[]
+    message?: string
+  }
+
   type BaseResponseListSpaceLevel_ = {
     code?: number
     data?: SpaceLevel[]
+    message?: string
+  }
+
+  type BaseResponseListSpaceSizeAnalyzeResponse_ = {
+    code?: number
+    data?: SpaceSizeAnalyzeResponse[]
+    message?: string
+  }
+
+  type BaseResponseListSpaceTagAnalyzeResponse_ = {
+    code?: number
+    data?: SpaceTagAnalyzeResponse[]
+    message?: string
+  }
+
+  type BaseResponseListSpaceUserAnalyzeResponse_ = {
+    code?: number
+    data?: SpaceUserAnalyzeResponse[]
     message?: string
   }
 
@@ -112,6 +142,12 @@ declare namespace API {
   type BaseResponsePictureVO_ = {
     code?: number
     data?: PictureVO
+    message?: string
+  }
+
+  type BaseResponseSpaceUsageAnalyzeResponse_ = {
+    code?: number
+    data?: SpaceUsageAnalyzeResponse
     message?: string
   }
 
@@ -420,6 +456,52 @@ declare namespace API {
   }
 
   type Pinyin_16 = {
+    /** 全空间分析 */
+    queryAll?: boolean
+    /** 是否查询公共图库 */
+    queryPublic?: boolean
+    /** 空间 ID */
+    spaceId?: number
+  }
+
+  type Pinyin_17 = {
+    category?: string
+    count?: number
+    totalSize?: number
+  }
+
+  type Pinyin_18 = {
+    /** 全空间分析 */
+    queryAll?: boolean
+    /** 是否查询公共图库 */
+    queryPublic?: boolean
+    /** 空间 ID */
+    spaceId?: number
+  }
+
+  type Pinyin_19 = {
+    /** 全空间分析 */
+    queryAll?: boolean
+    /** 是否查询公共图库 */
+    queryPublic?: boolean
+    /** 空间 ID */
+    spaceId?: number
+  }
+
+  type Pinyin_2 = {
+    /** id */
+    id?: number
+    /** 空间图片的最大数量 */
+    maxCount?: number
+    /** 空间图片的最大总大小 */
+    maxSize?: number
+    /** 空间级别：0-普通版 1-专业版 2-旗舰版 */
+    spaceLevel?: number
+    /** 空间名称 */
+    spaceName?: string
+  }
+
+  type Pinyin_20 = {
     current?: number
     /** id */
     id?: number
@@ -434,29 +516,38 @@ declare namespace API {
     userId?: number
   }
 
-  type Pinyin_17 = {
+  type Pinyin_21 = {
+    /** 全空间分析 */
+    queryAll?: boolean
+    /** 是否查询公共图库 */
+    queryPublic?: boolean
+    /** 空间 ID */
+    spaceId?: number
+  }
+
+  type Pinyin_22 = {
+    /** 全空间分析 */
+    queryAll?: boolean
+    /** 是否查询公共图库 */
+    queryPublic?: boolean
+    /** 空间 ID */
+    spaceId?: number
+    /** 时间维度：day / week / month */
+    timeDimension?: string
+    /** 用户 ID */
+    userId?: number
+  }
+
+  type Pinyin_23 = {
     /** 空间 id */
     id?: number
     /** 空间名称 */
     spaceName?: string
   }
 
-  type Pinyin_18 = {
+  type Pinyin_24 = {
     /** id */
     id?: number
-  }
-
-  type Pinyin_2 = {
-    /** id */
-    id?: number
-    /** 空间图片的最大数量 */
-    maxCount?: number
-    /** 空间图片的最大总大小 */
-    maxSize?: number
-    /** 空间级别：0-普通版 1-专业版 2-旗舰版 */
-    spaceLevel?: number
-    /** 空间名称 */
-    spaceName?: string
   }
 
   type Pinyin_3 = {
@@ -610,6 +701,34 @@ declare namespace API {
     maxSize?: number
     text?: string
     value?: number
+  }
+
+  type SpaceRankAnalyzeRequest = {
+    topN?: number
+  }
+
+  type SpaceSizeAnalyzeResponse = {
+    count?: number
+    sizeRange?: string
+  }
+
+  type SpaceTagAnalyzeResponse = {
+    count?: number
+    tag?: string
+  }
+
+  type SpaceUsageAnalyzeResponse = {
+    countUsageRatio?: number
+    maxCount?: number
+    maxSize?: number
+    sizeUsageRatio?: number
+    usedCount?: number
+    usedSize?: number
+  }
+
+  type SpaceUserAnalyzeResponse = {
+    count?: number
+    period?: string
   }
 
   type SpaceVO = {

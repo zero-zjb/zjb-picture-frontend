@@ -4,7 +4,7 @@ import request from '@/request'
 
 /** 删除图片 POST /api/picture/delete */
 export async function deletePictureUsingPost(
-  body: API.Pinyin_18,
+  body: API.Pinyin_24,
   options?: { [key: string]: any }
 ) {
   return request<API.BaseResponseBoolean_>('/api/picture/delete', {

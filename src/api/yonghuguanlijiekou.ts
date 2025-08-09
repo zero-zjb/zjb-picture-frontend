@@ -15,7 +15,7 @@ export async function addUserUsingPost(body: API.Pinyin_12, options?: { [key: st
 }
 
 /** 删除用户 POST /api/user/delete */
-export async function deleteUserUsingPost(body: API.Pinyin_18, options?: { [key: string]: any }) {
+export async function deleteUserUsingPost(body: API.Pinyin_24, options?: { [key: string]: any }) {
   return request<API.BaseResponseBoolean_>('/api/user/delete', {
     method: 'POST',
     headers: {

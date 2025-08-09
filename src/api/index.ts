@@ -5,10 +5,12 @@
 import * as tupianshangchuanhexiazaiceshijiekou from './tupianshangchuanhexiazaiceshijiekou'
 import * as tupianguanlijiekou from './tupianguanlijiekou'
 import * as kongjianguanlijiekou from './kongjianguanlijiekou'
+import * as kongjianfenxi from './kongjianfenxi'
 import * as yonghuguanlijiekou from './yonghuguanlijiekou'
 export default {
   tupianshangchuanhexiazaiceshijiekou,
   tupianguanlijiekou,
   kongjianguanlijiekou,
+  kongjianfenxi,
   yonghuguanlijiekou,
 }

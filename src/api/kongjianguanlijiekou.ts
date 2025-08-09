@@ -18,7 +18,7 @@ export async function addSpaceUsingPost(
 }
 
 /** 删除空间 POST /api/space/delete */
-export async function deleteSpaceUsingPost(body: API.Pinyin_18, options?: { [key: string]: any }) {
+export async function deleteSpaceUsingPost(body: API.Pinyin_24, options?: { [key: string]: any }) {
   return request<API.BaseResponseBoolean_>('/api/space/delete', {
     method: 'POST',
     headers: {
@@ -30,7 +30,7 @@ export async function deleteSpaceUsingPost(body: API.Pinyin_18, options?: { [key
 }
 
 /** 编辑空间 POST /api/space/edit */
-export async function editSpaceUsingPost(body: API.Pinyin_17, options?: { [key: string]: any }) {
+export async function editSpaceUsingPost(body: API.Pinyin_23, options?: { [key: string]: any }) {
   return request<API.BaseResponseBoolean_>('/api/space/edit', {
     method: 'POST',
     headers: {
@@ -66,7 +66,7 @@ export async function listSpaceLevelUsingGet(options?: { [key: string]: any }) {
 
 /** 分页获取空间列表 POST /api/space/list/page */
 export async function listSpaceByPageUsingPost(
-  body: API.Pinyin_16,
+  body: API.Pinyin_20,
   options?: { [key: string]: any }
 ) {
   return request<API.BaseResponsePageSpace_>('/api/space/list/page', {
@@ -81,7 +81,7 @@ export async function listSpaceByPageUsingPost(
 
 /** 分页获取空间列表（封装类） POST /api/space/list/page/vo */
 export async function listSpaceVoByPageUsingPost(
-  body: API.Pinyin_16,
+  body: API.Pinyin_20,
   options?: { [key: string]: any }
 ) {
   return request<API.BaseResponsePageSpaceVO_>('/api/space/list/page/vo', {
