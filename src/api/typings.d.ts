@@ -11,6 +11,8 @@ declare namespace API {
     spaceLevel?: number
     /** 空间名称 */
     spaceName?: string
+    /** 空间类型：0-私有 1-团队 */
+    spaceType?: number
   }
 
   type BaseResponseBoolean_ = {
@@ -39,7 +41,7 @@ declare namespace API {
 
   type BaseResponseList_ = {
     code?: number
-    data?: Pinyin_17[]
+    data?: Pinyin_18[]
     message?: string
   }
 
@@ -82,6 +84,12 @@ declare namespace API {
   type BaseResponseListSpaceUserAnalyzeResponse_ = {
     code?: number
     data?: SpaceUserAnalyzeResponse[]
+    message?: string
+  }
+
+  type BaseResponseListSpaceUserVO_ = {
+    code?: number
+    data?: SpaceUserVO[]
     message?: string
   }
 
@@ -148,6 +156,12 @@ declare namespace API {
   type BaseResponseSpaceUsageAnalyzeResponse_ = {
     code?: number
     data?: SpaceUsageAnalyzeResponse
+    message?: string
+  }
+
+  type BaseResponseSpaceUser_ = {
+    code?: number
+    data?: SpaceUser_
     message?: string
   }
 
@@ -361,6 +375,7 @@ declare namespace API {
     id?: number
     introduction?: string
     name?: string
+    permissionList?: string[]
     picColor?: string
     picFormat?: string
     picHeight?: number
@@ -397,6 +412,15 @@ declare namespace API {
   }
 
   type Pinyin_11 = {
+    /** 空间 ID */
+    spaceId?: number
+    /** 空间角色：viewer/editor/admin */
+    spaceRole?: string
+    /** 用户 ID */
+    userId?: number
+  }
+
+  type Pinyin_12 = {
     /** 用户id */
     id?: number
     /** 用户头像 */
@@ -409,7 +433,7 @@ declare namespace API {
     userRole?: string
   }
 
-  type Pinyin_12 = {
+  type Pinyin_13 = {
     /** 用户账号 */
     userAccount?: string
     /** 用户头像 */
@@ -422,7 +446,7 @@ declare namespace API {
     userRole?: string
   }
 
-  type Pinyin_13 = {
+  type Pinyin_14 = {
     current?: number
     /** 用户id */
     id?: number
@@ -439,7 +463,7 @@ declare namespace API {
     userRole?: string
   }
 
-  type Pinyin_14 = {
+  type Pinyin_15 = {
     /** 校验密码 */
     checkPassword?: string
     /** 用户账号 */
@@ -448,35 +472,26 @@ declare namespace API {
     userPassword?: string
   }
 
-  type Pinyin_15 = {
+  type Pinyin_16 = {
     /** 用户账号 */
     userAccount?: string
     /** 用户密码 */
     userPassword?: string
   }
 
-  type Pinyin_16 = {
+  type Pinyin_17 = {
     /** 全空间分析 */
     queryAll?: boolean
     /** 是否查询公共图库 */
     queryPublic?: boolean
     /** 空间 ID */
     spaceId?: number
-  }
-
-  type Pinyin_17 = {
-    category?: string
-    count?: number
-    totalSize?: number
   }
 
   type Pinyin_18 = {
-    /** 全空间分析 */
-    queryAll?: boolean
-    /** 是否查询公共图库 */
-    queryPublic?: boolean
-    /** 空间 ID */
-    spaceId?: number
+    category?: string
+    count?: number
+    totalSize?: number
   }
 
   type Pinyin_19 = {
@@ -502,6 +517,26 @@ declare namespace API {
   }
 
   type Pinyin_20 = {
+    /** 全空间分析 */
+    queryAll?: boolean
+    /** 是否查询公共图库 */
+    queryPublic?: boolean
+    /** 空间 ID */
+    spaceId?: number
+  }
+
+  type Pinyin_21 = {
+    /** ID */
+    id?: number
+    /** 空间 ID */
+    spaceId?: number
+    /** 空间角色：viewer/editor/admin */
+    spaceRole?: string
+    /** 用户 ID */
+    userId?: number
+  }
+
+  type Pinyin_22 = {
     current?: number
     /** id */
     id?: number
@@ -512,11 +547,13 @@ declare namespace API {
     spaceLevel?: number
     /** 空间名称 */
     spaceName?: string
+    /** 空间类型：0-私有 1-团队 */
+    spaceType?: number
     /** 用户 id */
     userId?: number
   }
 
-  type Pinyin_21 = {
+  type Pinyin_23 = {
     /** 全空间分析 */
     queryAll?: boolean
     /** 是否查询公共图库 */
@@ -525,7 +562,7 @@ declare namespace API {
     spaceId?: number
   }
 
-  type Pinyin_22 = {
+  type Pinyin_24 = {
     /** 全空间分析 */
     queryAll?: boolean
     /** 是否查询公共图库 */
@@ -538,14 +575,21 @@ declare namespace API {
     userId?: number
   }
 
-  type Pinyin_23 = {
+  type Pinyin_25 = {
     /** 空间 id */
     id?: number
     /** 空间名称 */
     spaceName?: string
   }
 
-  type Pinyin_24 = {
+  type Pinyin_26 = {
+    /** id */
+    id?: number
+    /** 空间角色：viewer/editor/admin */
+    spaceRole?: string
+  }
+
+  type Pinyin_27 = {
     /** id */
     id?: number
   }
@@ -686,6 +730,8 @@ declare namespace API {
     spaceLevel?: number
     /** 空间名称 */
     spaceName?: string
+    /** 空间类型：0-私有 1-团队 */
+    spaceType?: number
     /** 当前空间下的图片数量 */
     totalCount?: number
     /** 当前空间下图片的总大小 */
@@ -726,9 +772,35 @@ declare namespace API {
     usedSize?: number
   }
 
+  type SpaceUser_ = {
+    /** 创建时间 */
+    createTime?: string
+    /** id */
+    id?: number
+    /** 空间 id */
+    spaceId?: number
+    /** 空间角色：viewer/editor/admin */
+    spaceRole?: string
+    /** 更新时间 */
+    updateTime?: string
+    /** 用户 id */
+    userId?: number
+  }
+
   type SpaceUserAnalyzeResponse = {
     count?: number
     period?: string
+  }
+
+  type SpaceUserVO = {
+    createTime?: string
+    id?: number
+    space?: SpaceVO
+    spaceId?: number
+    spaceRole?: string
+    updateTime?: string
+    user?: UserVO
+    userId?: number
   }
 
   type SpaceVO = {
@@ -737,8 +809,10 @@ declare namespace API {
     id?: number
     maxCount?: number
     maxSize?: number
+    permissionList?: string[]
     spaceLevel?: number
     spaceName?: string
+    spaceType?: number
     totalCount?: number
     totalSize?: number
     updateTime?: string

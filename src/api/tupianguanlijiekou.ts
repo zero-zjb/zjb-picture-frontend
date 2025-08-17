@@ -4,7 +4,7 @@ import request from '@/request'
 
 /** 删除图片 POST /api/picture/delete */
 export async function deletePictureUsingPost(
-  body: API.Pinyin_24,
+  body: API.Pinyin_27,
   options?: { [key: string]: any }
 ) {
   return request<API.BaseResponseBoolean_>('/api/picture/delete', {
@@ -119,7 +119,7 @@ export async function listPictureVoByPageWithCacheUsingPost(
   })
 }
 
-/** createPictureOutPaintingTask POST /api/picture/out_painting/create_task */
+/** 创建 AI 扩图任务 POST /api/picture/out_painting/create_task */
 export async function createPictureOutPaintingTaskUsingPost(
   body: API.Pinyin_3,
   options?: { [key: string]: any }
@@ -137,7 +137,7 @@ export async function createPictureOutPaintingTaskUsingPost(
   )
 }
 
-/** getPictureOutPaintingTask GET /api/picture/out_painting/get_task */
+/** 查询 AI 扩图任务 GET /api/picture/out_painting/get_task */
 export async function getPictureOutPaintingTaskUsingGet(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
   params: API.getPictureOutPaintingTaskUsingGETParams,

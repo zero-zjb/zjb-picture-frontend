@@ -24,7 +24,14 @@
                 AI 扩图
             </a-button>
         </a-space>
-        <ImageOutPainting
+      <ImageCropper
+          ref="imageCropperRef"
+          :imageUrl="picture?.url"
+          :picture="picture"
+          :spaceId="spaceId"
+          :onSuccess="onCropSuccess"
+      />
+      <ImageOutPainting
                 ref="imageOutPaintingRef"
                 :picture="picture"
                 :spaceId="spaceId"
@@ -71,6 +78,7 @@
   </div>
 </template>
 <script lang="ts" setup>
+
 import { editPictureUsingPost, getPictureVoByIdUsingGet, listPictureTagCategoryUsingGet } from '@/api/tupianguanlijiekou';
 import PictureUpload from '@/components/PictureUpload.vue';
 import { message } from 'ant-design-vue';
@@ -78,8 +86,8 @@ import {ref, reactive, onMounted, computed, h} from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import UrlPictureUpload from "@/components/UrlPictureUpload.vue";
 import {EditOutlined, FullscreenOutlined} from "@ant-design/icons-vue";
-import ImageCropper from "@/components/ImageCropper.vue";
 import ImageOutPainting from "@/components/ImageOutPainting.vue";
+import ImageCropper from "@/components/ImageCropper.vue";
 
 const router = useRouter()
 const route = useRoute()
