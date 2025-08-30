@@ -68,7 +68,7 @@
                 <DownloadOutlined />
               </template>
             </a-button>
-              <a-button type="primary" ghost @click="doShare">
+              <a-button type="primary" ghost @click="doShare()">
                   分享
                   <template #icon>
                       <share-alt-outlined />
@@ -90,6 +90,7 @@
         </a-card>
       </a-col>
     </a-row>
+    <ShareModal ref="shareModalRef" :link="shareLink" />
   </div>
 </template>
 
@@ -99,10 +100,10 @@ import { computed, onMounted, reactive, ref } from 'vue'
 import { deletePictureUsingPost, getPictureVoByIdUsingGet } from '@/api/tupianguanlijiekou.ts'
 import { message } from 'ant-design-vue'
 import { downloadImage, formatSize, toHexColor } from '../utils'
-import { useLoginUserStore } from '@/stores/useLoginUserStore.ts'
 import router from '@/router'
 import { EditOutlined, DeleteOutlined, DownloadOutlined } from '@ant-design/icons-vue'
 import {SPACE_PERMISSION_ENUM} from "@/contants/space.ts";
+import ShareModal from "@/components/ShareModal.vue";
 
 const props = defineProps<{
   id: string | number

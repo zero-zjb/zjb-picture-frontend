@@ -368,6 +368,13 @@ declare namespace API {
     tagList?: string[]
   }
 
+  // type PictureUploadRequest = {
+  //   id?: number,
+  //   fileUrl?: string,
+  //   spaceId?: number,
+  //   picName?: string
+  // }
+
   type PictureVO = {
     category?: string
     createTime?: string
@@ -607,6 +614,7 @@ declare namespace API {
     id?: number
     /** 图片名称 */
     picName?: string
+    /** 空间 id */
     spaceId?: number
   }
 
@@ -838,6 +846,7 @@ declare namespace API {
     id?: number
     /** 图片名称 */
     picName?: string
+    /** 空间 id */
     spaceId?: number
   }
 
